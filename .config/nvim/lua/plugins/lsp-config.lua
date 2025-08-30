@@ -14,6 +14,7 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
+                    "clangd",
 					"elp",
 					"golangci_lint_ls",
 					"gopls",
@@ -48,6 +49,7 @@ return {
 		lazy = false,
 		config = function()
 			local lspconfig = require("lspconfig")
+			lspconfig.clangd.setup({})
 			lspconfig.elp.setup({})
 			lspconfig.golangci_lint_ls.setup({})
 			lspconfig.gopls.setup({
@@ -59,7 +61,6 @@ return {
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-            vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
 			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
 		end,
 	},
